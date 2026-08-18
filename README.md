@@ -34,7 +34,23 @@ Captures core data from the tcp header - Source IP, Destination IP, Source Port,
     //To ensure that the hash keep changing
     h1 = h1 * 5 + 0xe6546b64;
 ```
-This code is where the mixing of the bits happens. By moving 15 and 13 positions to the right, it ensures that it doesn't generate similar hashes and avoid collisions. Therefore captured attributes from the TCP header are combined into a single hash that also helps in low collision rate and speed optimization during the process. This also maintains memory efficiency.
+This code is where the mixing of the bits happens. By moving 15 and 13 positions to the right, it ensures that it doesn't generate similar hashes and avoid collisions. Therefore captured attributes from the TCP header (above) are combined into a single hash that also helps in low collision rate and speed optimization during the process. This also maintains memory efficiency.
+
+### Entry table 
+
+```
+typedef struct {
+    flowtracker key;
+    uint64_t packet_count;
+    uint64_t byte_count;
+    uint8_t *slot;
+    struct oo_fragment *ooo_queue;
+    uint32_t buffer_max_size;
+    uint32_t initial_sequence;
+    uint32_t next_expected_seq;
+    int is_active;
+} flowentry;
+```
 
 ## License
 Copyright © 2026. All rights reserved. This code is for viewing purposes only. No unauthorized reproduction, distribution, or execution is permitted.
