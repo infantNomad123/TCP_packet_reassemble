@@ -10,6 +10,11 @@ This project implements high-performance and from-scratch implementation of a TC
 * **Custom hash table:** Features a cache-friendly hash array index mapping system to optimize memory allocations and lookup.
 
 ## Architecture & Design
+
+
+
+### Core Data Layout
+#### 5 tuple data structure
 ```
 typedef struct __attribute__((packed)) {
     uint32_t src_ip;
@@ -19,10 +24,18 @@ typedef struct __attribute__((packed)) {
     uint8_t protocol;
 } flowtracker;
 ```
+Captures core data from the tcp header - Source IP, Destination IP, Source Port, Destination Port and Protocol (6 or 14)
 
-### Core Data Layout
-```[language]
-// Insert primary struct, class, or schema here
+#### Hashing using Murmur3 Algorithm
+```
+ __builtin_memcpy(&k1, &data[0], bytes); // Copy data into a variable memory
+    k1 *= c1;
+    k1 = ROTL32(k1, 15);
+    k1 *= c2;
+    h1 ^= k1;
+    h1 = ROTL32(h1, 13);
+    //To ensure that the hash keep changing
+    h1 = h1 * 5 + 0xe6546b64;
 ```
 
 ## Getting Started
