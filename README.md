@@ -9,3 +9,38 @@ This project implements high-performance and from-scratch implementation of a TC
 * **Murmur3 hashing algorithms:** To ensure the low collision rate and also optimized speed.
 * **Custom hash table:** Features a cache-friendly hash array index mapping system to optimize memory allocations and lookup.
 
+## Architecture & Design
+```
+typedef struct __attribute__((packed)) {
+    uint32_t src_ip;
+    uint32_t dst_ip;
+    uint16_t src_port;
+    uint16_t dst_port;
+    uint8_t protocol;
+} flowtracker;
+```
+
+### Core Data Layout
+```[language]
+// Insert primary struct, class, or schema here
+```
+
+## Getting Started
+
+### Prerequisites
+* [e.g., Node.js v18+, GCC 11+, Docker]
+
+### Installation
+```bash
+git clone https://github.com
+cd repo
+make setup
+```
+
+## 💻 Usage Example
+```[language]
+// Shortest copy-pasteable working snippet
+```
+
+## 📜 License
+Distributed under the [MIT/Apache 2.0] License. See `LICENSE` for details.
