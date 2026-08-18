@@ -36,7 +36,7 @@ Captures core data from the tcp header - Source IP, Destination IP, Source Port,
 ```
 This code is where the mixing of the bits happens. By moving 15 and 13 positions to the right, it ensures that it doesn't generate similar hashes and avoid collisions. Therefore captured attributes from the TCP header (above) are combined into a single hash that also helps in low collision rate and speed optimization during the process. This also maintains memory efficiency.
 
-### Entry table 
+#### Entry table 
 
 ```
 typedef struct {
