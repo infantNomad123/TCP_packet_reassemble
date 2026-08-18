@@ -9,4 +9,3 @@ This project implements high-performance and from-scratch implementation of a TC
 * **Murmur3 hashing algorithms:** To ensure the low collision rate and also optimized speed.
 * **Custom hash table:** Features a cache-friendly hash array index mapping system to optimize memory allocations and lookup.
 
-. 
