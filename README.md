@@ -65,7 +65,7 @@ This code represents a single, active TCP stream state in a hash table. It keeps
  }
  memmove(entry->slot + buffer_offset, payload, payload_len);
 ```
-It finds the value of buffer offset that is required to be skipped during the reconstruction. Using this method the function memmove will write the packets into their exact, correct slot even if they are unordered. memmove is also excellent in handling the overlapping memory safely without corrupting the data.
+It finds the value of buffer offset that is required to be skipped during the reconstruction. Using this method the function memmove() will write the packets into their exact, correct slot even if they are unordered. memmove() is also excellent in handling the overlapping memory safely without corrupting the data.
 
 ## License
 Copyright © 2026. All rights reserved. This code is for viewing purposes only. No unauthorized reproduction, distribution, or execution is permitted.
