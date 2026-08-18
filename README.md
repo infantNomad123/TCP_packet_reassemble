@@ -44,7 +44,6 @@ typedef struct {
     uint64_t packet_count;
     uint64_t byte_count;
     uint8_t *slot;
-    struct oo_fragment *ooo_queue;
     uint32_t buffer_max_size;
     uint32_t initial_sequence;
     uint32_t next_expected_seq;
