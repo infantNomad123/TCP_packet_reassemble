@@ -10,9 +10,6 @@ This project implements high-performance and from-scratch implementation of a TC
 * **Custom hash table:** Features a cache-friendly hash array index mapping system to optimize memory allocations and lookup.
 
 ## Architecture & Design
-
-
-
 ### Core Data Layout
 #### 5 tuple data structure
 ```
@@ -24,7 +21,7 @@ typedef struct __attribute__((packed)) {
     uint8_t protocol;
 } flowtracker;
 ```
-Captures core data from the tcp header - Source IP, Destination IP, Source Port, Destination Port and Protocol (6 or 14)
+Captures core data from the tcp header - Source IP, Destination IP, Source Port, Destination Port and Protocol (6 or 17)
 
 #### Hashing using Murmur3 Algorithm
 ```
@@ -37,23 +34,8 @@ Captures core data from the tcp header - Source IP, Destination IP, Source Port,
     //To ensure that the hash keep changing
     h1 = h1 * 5 + 0xe6546b64;
 ```
+This code is where the mixing of the bits happens. By moving 15 and 13 positions to the right, it ensures that it doesn't generate similar hashes and avoid collisions. Therefore captured attributes from the TCP header and combines them into a single hash that also helps in low collision rate and speed optimization during the process.
 
-## Getting Started
+## License
+Copyright © 2026. All rights reserved. This code is for viewing purposes only. No unauthorized reproduction, distribution, or execution is permitted.
 
-### Prerequisites
-* [e.g., Node.js v18+, GCC 11+, Docker]
-
-### Installation
-```bash
-git clone https://github.com
-cd repo
-make setup
-```
-
-## 💻 Usage Example
-```[language]
-// Shortest copy-pasteable working snippet
-```
-
-## 📜 License
-Distributed under the [MIT/Apache 2.0] License. See `LICENSE` for details.
