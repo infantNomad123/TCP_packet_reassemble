@@ -55,6 +55,16 @@ This code represents a single, active TCP stream state in a hash table. It keeps
 * **The Reassembly Mechanics (Stitching the data):** Slot, buffer_max_size, initial_sequence
 * **Housekeeping (State management):** key , is_active 
 
+#### Reconstructing the stream
+```
+ uint32_t buffer_offset = current_seq - entry->initial_sequence;
+
+ //Prevent from buffer overload
+ if (buffer_offset + payload_len > entry->buffer_max_size) {
+        return;
+ }
+ memmove(entry->slot + buffer_offset, payload, payload_len);
+```
 
 ## License
 Copyright © 2026. All rights reserved. This code is for viewing purposes only. No unauthorized reproduction, distribution, or execution is permitted.
