@@ -36,7 +36,7 @@ Captures core data from the tcp header - Source IP, Destination IP, Source Port,
 ```
 This code is where the mixing of the bits happens. By moving 15 and 13 positions to the right, it ensures that it doesn't generate similar hashes and avoid collisions. Therefore captured attributes from the TCP header (above) are combined into a single hash that also helps in low collision rate and speed optimization during the process. This also maintains memory efficiency.
 
-#### Entry table 
+#### Tracking stream using entry table 
 
 ```
 typedef struct {
@@ -50,6 +50,11 @@ typedef struct {
     int is_active;
 } flowentry;
 ```
+This code represents a single, active TCP stream state in a hash table. It keeps the track of the metrics, reassembly mechanics and state management
+* **The metrics (Records packets and bytes):** Packet count, byte counts
+* **The Reassembly Mechanics (Stitching the data):** Slot, buffer_max_size, initial_sequence
+* **Housekeeping (State management):** key , is_active 
+
 
 ## License
 Copyright © 2026. All rights reserved. This code is for viewing purposes only. No unauthorized reproduction, distribution, or execution is permitted.
